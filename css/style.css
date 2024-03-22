@@ -1,15 +1,162 @@
 
- @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+#logo{ 
+    animation: logoEnlarge 5s 1;
+    width: 475px;
+    /* animate logo using keyframes, time: 5 seconds, only happens when loaded */
+} 
 
-
-#logo{
-
-    /* animate logo using keyframes, width 25px --> 475px, opacity 0 --> 1, time: 5 seconds, only happens when loaded */
+@keyframes logoEnlarge{
+    0% {
+        width: 25px; 
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
+    /* width 25px --> 475px, opacity 0 --> 1, */
 }
 
 body{
-    font-family: "Poppins", Serif;
-    background-image: url("images/concrete_seamless.png");
-
+    font-family: 'Poppins', Serif;
+    background: #f1f1f1 url("../images/concrete_seamless.png") repeat;
     /* import poppins font, set fonts, set background image and backup color */
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* display header as flex, stacks flex items vertically, center items */
+}
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+    color:blue;
+    /* nav links are flex and stacked vertically */
+}
+
+a:visited {
+    color: blue;
+    /* styling links to have the same color after they are visited */
+}
+
+.card > header {
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    /*styling card header, adding background color, borders, add padding, alter border radius*/
+}
+
+.card{
+    flex: 0 1 450px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    /* adding extra styling to card to curve corners so the white behind is not showing */
+}
+
+.pricing{
+    display: flex;
+    flex-flow: row wrap;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    /* styling pricing cards with flex, centering cards horizontally and vertically */
+}
+
+.gallery img {
+    border: solid 10px #50c7c7;
+    width: 300px;
+    /* add border to gallery images and set width of images to 300px */
+}
+
+.gallery {
+    display: flex; 
+    flex-flow: row wrap;
+    flex: 0 0 300px;
+    justify-content: center;
+    /* styling gallery images in flexbox */
+}
+
+@media screen and (min-width: 900px){
+    body > header {
+        flex-direction: row;
+        justify-content: space-between;
+        position: sticky; 
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        /* display top nav and logo bar horizontally, keep header on page while scrolling, position header at the top of the page */
+    }
+
+    .nav_links{
+        flex-direction: row;
+        /* display links in row */
+    }
+
+    .card{
+        flex: 0 0 275px;
+        /* set default width of cards to 275px */
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce){
+    #logo{
+        animation: none;
+    }
+    /* turns animation of logo off for users that prefer reduced motion */
+}
+
+@media print {
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none
+        /*set fonts, and remove background image*/
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+        /* setting logo and nav to be vertically stacked */
+    }
+
+    nav{
+        width: 100%;
+        /*width of nav takes up full width */
+    }
+
+    .nav_links{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        /* spread nav links evenly across width */
+    }
+
+    .pricing{
+        align-items: flex-end;
+        flex-flow: row nowrap;
+        /* cards are in the same row and vertically aligned on the bottom */
+    }
+
+    .card{
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+        /* add border and set default card width */
+    }
+
+    #gallery .gallery{
+        display: none;
+        /* do not show gallery in print mode */
+    }
+
+    .card li:nth-child(2)::after {
+        content: "👍";
+        /* add thumbs up emoji after the second child element of card */
+    }
 }
